@@ -22,6 +22,27 @@ func Hello(name string) (string, error)  {
     return message, nil
 }
 
+// Function Hellos returns a map that associates each of the named
+// people with a greeting message
+func Hellos(names []string) (map[string]string, error)  {
+    // A map to associate names with messages.
+    // Syntax of make =>  messages := make(type, 0)
+    messages := make(map[string]string)
+
+    // Loop throught the received slice of names, calling
+    for _, name := range names {
+        message, err := Hello(name)
+        if err != nil {
+            return nil, err
+        }
+        // In the map, associate the retrieved message with the name.
+        messages[name] = message
+    }
+
+    return messages, nil
+    
+}
+
 // NOTE: lowerCase function names can't be exported. private func
 // Function init sets initial value for variables used here
 func init()  {
@@ -34,7 +55,7 @@ func randomFormat() string  {
     // A slice of message formats.
     formats := []string{
         "Hi, %v. Welcome!",
-        "Great to see you, %v",
+        "Great to see you, %v.",
         "Hail, %v! Well met!",
     }
 
