@@ -17,6 +17,7 @@ func Hello(name string) (string, error)  {
     // Returns a greeting that embeds the name in a message.
     // message := fmt.Sprintf("Hi, %v. Welcome!", name)
     message := fmt.Sprintf(randomFormat(), name)
+    // message := fmt.Sprint(randomFormat()) // Failing test
 
     // nil means no error as a second value in the successful return
     return message, nil
